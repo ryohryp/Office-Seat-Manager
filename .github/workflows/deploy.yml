@@ -1,0 +1,51 @@
+name: Deploy HTML5 app to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # ← mainブランチにpushされたら自動実行
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # もしビルド不要の純粋なHTMLだけなら、このstepは不要
+      # npmでビルドするとかあればここに追記
+      # - name: Install dependencies
+      #   run: npm ci
+      # - name: Build
+      #   run: npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # ビルドした成果物のパス
+          # 純粋なHTMLだけなら ./ を指定（リポジトリ直下をそのまま公開）
+          path: ./
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
