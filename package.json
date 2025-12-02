@@ -1,17 +1,29 @@
 {
   "name": "yakushi-office-seat-manager",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
+  "description": "<div align=\"center\">\r <img width=\"1200\" height=\"475\" alt=\"GHBanner\" src=\"https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6\" />\r </div>",
+  "homepage": "https://github.com/ryohryp/Office-Seat-Manager#readme",
+  "bugs": {
+    "url": "https://github.com/ryohryp/Office-Seat-Manager/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryohryp/Office-Seat-Manager.git"
+  },
+  "license": "ISC",
+  "author": "",
   "type": "module",
+  "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "lucide-react": "^0.554.0",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "lucide-react": "^0.554.0"
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
